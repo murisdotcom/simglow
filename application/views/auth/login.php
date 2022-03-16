@@ -34,10 +34,10 @@
             <form>
               <h1>Login Form</h1>
               <div>
-                <input type="text" class="form-control" placeholder="Username" required="" />
+                <input type="text" class="form-control" id="email" name="email" placeholder="Enter email address..." autocomplete="off">
               </div>
               <div>
-                <input type="password" class="form-control" placeholder="Password" required="" />
+                <input type="password" id="password" name="password" class="form-control" placeholder="Password">
               </div>
               <div>
                 <a class="btn btn-default submit" href="index.html">Log in</a>
@@ -92,8 +92,9 @@
                 <br />
 
                 <div>
-                  <h1><i class="fa fa-paw"></i> Gentelella Alela!</h1>
-                  <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p>
+                  <h1><i class="fa fa-paw"></i> MURIS.COM</h1>
+                  <p>Copyright &copy; <?= date('Y'); ?> muris.com</p>
+                  All Rights Reserved
                 </div>
               </div>
             </form>
