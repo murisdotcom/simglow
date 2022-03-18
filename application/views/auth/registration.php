@@ -3,19 +3,29 @@
 		<div class="animate form login_form">
 			<img style="width:350px;" src="<?= base_url('assets/') ?>img/Msglow.png">
 			<section class="login_content">
-				<form>
+				<form method="post" action="<?= base_url('auth/registration'); ?>">
 					<h1>Create Account</h1>
 					<div>
-						<input type="text" class="form-control" placeholder="Username" required="" />
+						<input name="name" id="name" type="text" class="form-control" placeholder="Fullname" value="<?= set_value('name'); ?>">
+
+						<?= form_error('name', '<span class="text-danger">','</span>'); ?>
 					</div>
 					<div>
-						<input type="email" class="form-control" placeholder="Email" required="" />
+						<input name="email" id="email" type="email" class="form-control" placeholder="Email" value="<?= set_value('email'); ?>">
+
+            <?= form_error('email', '<span class="text-danger">','</span>'); ?>
 					</div>
 					<div>
-						<input type="password" class="form-control" placeholder="Password" required="" />
+						<input name="password1" id="password1" type="password" class="form-control" placeholder="Password">
+						<?= form_error('password1', '<span class="text-danger">','</span>'); ?>
 					</div>
 					<div>
-						<a class="btn btn-default submit" href="index.html">Submit</a>
+					<div>
+						<input name="password2" id="password2" type="password" class="form-control" placeholder="Konfirmasi Password">
+						<?= form_error('password2', '<span class="text-danger">','</span>'); ?>
+					</div>
+					<div>
+						<button type="submit" class="btn btn-dark">Submit</button>
 					</div>
 
 					<div class="clearfix"></div>
