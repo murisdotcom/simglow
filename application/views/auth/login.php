@@ -4,26 +4,40 @@
 			<img style="width:350px;" src="<?= base_url('assets/') ?>img/Msglow.png">
 			<section class="login_content">
 
-
-			<?=$this->session->flashdata('message'); ?>
+				<?=$this->session->flashdata('message'); ?>
 
 				<!-- <div class="flash-data" data-flashdata="<?= $this->session->flashdata('message'); ?>"></div> -->
 
-				<form>
+				<form method="post" action="<?= base_url('auth'); ?>">
 					<h1>Login Form</h1>
 					<div>
 						<input type="text" class="form-control" id="email" name="email" placeholder="Enter email address..."
-							autocomplete="off">
+							autocomplete="off" value="<?= set_value('email'); ?>">
+						<?= form_error('email', '<span class="text-danger">','</span>'); ?>
 					</div>
 					<div>
 						<input type="password" id="password" name="password" class="form-control" placeholder="Password">
+						<?= form_error('password', '<span class="text-danger">','</span>'); ?>
 					</div>
 					<div>
-						<a class="btn btn-default submit" href="index.html">Log in</a>
-						<a class="reset_pass" href="#">Lost your password?</a>
+						<button class="btn btn-dark" type="submit">Log in</button>
+						<!-- <a class="reset_pass" href="#">Lost your password?</a> -->
 					</div>
 					<div class="clearfix"></div>
 					<div class="separator">
 						<p class="change_link">New to site?
 							<a href="<?= base_url('auth/registration'); ?>" class="to_register"> Create Account </a>
 						</p>
+						<div class="clearfix"></div>
+						<br />
+						<div>
+							<h1><i class="fa fa-paw"></i> MURIS.COM</h1>
+							<p>Copyright &copy; <?= date('Y'); ?> muris.com</p>
+							All Rights Reserved
+						</div>
+					</div>
+				</form>
+			</section>
+		</div>
+	</div>
+</div>
