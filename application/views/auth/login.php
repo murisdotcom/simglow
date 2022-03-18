@@ -3,6 +3,12 @@
 		<div class="animate form login_form">
 			<img style="width:350px;" src="<?= base_url('assets/') ?>img/Msglow.png">
 			<section class="login_content">
+
+
+			<?=$this->session->flashdata('message'); ?>
+
+				<!-- <div class="flash-data" data-flashdata="<?= $this->session->flashdata('message'); ?>"></div> -->
+
 				<form>
 					<h1>Login Form</h1>
 					<div>

@@ -21,7 +21,9 @@ class Auth extends CI_Controller {
   {
 
     $this->form_validation->set_rules('name', 'Name', 'required|trim');
-    $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
+    $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[user.email]', [
+      'is_unique' => 'This email has already registered!'
+    ]);
     $this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[6]|matches[password2]',[
       'matches' => 'Password dont match!',
       'min_length' => 'password to short'
@@ -47,6 +49,10 @@ class Auth extends CI_Controller {
       ];
 
       $this->db->insert('user', $data);
+      $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+      Congratulation your account has been created. Please Login!
+    </div>');
+      redirect('auth');
     }
   }
 }
