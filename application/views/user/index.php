@@ -201,29 +201,29 @@
 		<!-- page content -->
 		<div class="right_col" role="main">
 			<!-- top tiles -->
-			<div class="row" style="display: inline-block;">
-				<div class="tile_count">
-					<div class="col-md-2 col-sm-4  tile_stats_count">
+			<div class="col" style="display: inline-block;">
+				<div class="tile_count" style="text-align: center;">
+					<div class="col-md-2 tile_stats_count">
 						<span class="count_top"><i class="fa fa-user"></i> Total Reseller</span>
 						<div class="count">2500</div>
 						<span class="count_bottom"><i class="green">4% </i> From last Week</span>
 					</div>
-					<div class="col-md-3 col-sm-4  tile_stats_count">
+					<div class="col-md-2 tile_stats_count">
 						<span class="count_top"><i class="fa fa-fw fa-shopping-cart"></i> Transaksi Penjualan</span>
 						<div class="count">123.50</div>
 						<span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>3% </i> From last Week</span>
 					</div>
-					<div class="col-md-2 col-sm-4  tile_stats_count">
+					<div class="col-md-2 tile_stats_count">
 						<span class="count_top"><i class="fa fa-fw fa-plus"></i> Stok Masuk Hari Ini</span>
 						<div class="count green">2,500</div>
 						<span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
 					</div>
-					<div class="col-md-3 col-sm-4  tile_stats_count">
+					<div class="col-md-2 tile_stats_count">
 						<span class="count_top"><i class="fa fa-fw fa-money"></i> Total Penjualan Bulan Ini</span>
 						<div class="count">4,567</div>
 						<span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i>12% </i> From last Week</span>
 					</div>
-					<div class="col-md-2 col-sm-4  tile_stats_count">
+					<div class="col-md-2 tile_stats_count">
 						<span class="count_top"><i class="fa fa-fw fa-bank"></i> Total Piutang</span>
 						<div class="count">4,567</div>
 						<span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i>12% </i> From last Week</span>
@@ -337,19 +337,11 @@
 						<div class="x_content">
 							<div style="height: 250px;max-height: 250px; overflow-y: scroll;">
 								<ul class="list-group" id="stok_produk">
-									<table style="text-align:center;">
-										<thead>
-											<tr>
-												<th>Nama</th>
-												<th>Qty</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr>
-												<td>acne</td>
-												<td>2</td>
-											</tr>
-										</tbody>
+									<table>
+										<tr>
+											<td>acne</td>
+											<td style="text-align: center;">2</td>
+										</tr>
 									</table>
 								</ul>
 							</div>
