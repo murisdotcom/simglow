@@ -1,3 +1,14 @@
+<footer>
+	<div style="text-align: center;">
+		Copyright &copy; <?= date('Y'); ?>
+		<a href="https://colorlib.com">muris.com
+			All Rights Reserved</a>
+	</div>
+	<div class="clearfix"></div>
+</footer>
+
+</div>
+</div>
 <!-- jQuery -->
 <script src="<?= base_url('assets/'); ?>vendors/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap -->
