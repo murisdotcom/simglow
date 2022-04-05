@@ -214,6 +214,35 @@
 
 	</div>
 
+	<!-- Modal -->
+	<div class="modal fade" id="profile" tabindex="-1" aria-labelledby="profileLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="profileLabel">My Profile</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="card">
+						<img src="<?= base_url('assets/img/profile/') . $user['image']; ?>" class="card-img-top" alt="...">
+						<div class="card-body">
+							<h5 class="card-title"><?= $user['name']; ?></h5>
+							<p class="card-text"><?= $user['email']; ?></p>
+							<p class="card-text">Member since <?= date('d F Y', $user['date_created']); ?></p>
+							<a href="#" class="btn btn-primary">Go somewhere</a>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary">Save changes</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
 
 	<!-- <div class="row">
 
