@@ -22,42 +22,83 @@
 
 		<!-- sidebar menu -->
 		<div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-			<div class="menu_section">
-				<h3>General</h3>
-				<ul class="nav side-menu">
-					<li>
-						<a><i class="fa fa-fw fa-truck"></i> Supplier</a>
-					</li>
-					<li>
-						<a><i class="fa fa-fw fa-users"></i> Pelanggan</a>
-					</li>
-					<li><a><i class="fa fa-fw fa-sitemap"></i> Produk <span class="fa fa-chevron-down"></span></a>
-						<ul class="nav child_menu">
-							<li><a href="tables.html">Kategori Produk</a></li>
-							<li><a href="tables_dynamic.html">Satuan Produk</a></li>
-							<li><a href="tables_dynamic.html">Produk</a></li>
+
+
+			<!-- QUERY MENU -->
+
+
+			<?php
+			$role_id = $this->session->userdata('role_id');
+			$queryMenu = "SELECT `user_menu`.`id`, `menu`
+										FROM `user_menu` JOIN `user_access_menu`
+											ON `user_menu`.`id` = `user_access_menu`.`menu_id`
+										WHERE `user_access_menu`.`role_id`= $role_id
+										ORDER BY `user_access_menu`.`menu_id` ASC
+										";
+
+			$menu = $this->db->query($queryMenu)->result_array();
+
+			?>
+
+			<!-- LOOPING MENU -->
+			<?php foreach ($menu as $m) : ?>
+				<div class="menu_section">
+					<h3><?= $m['menu']; ?></h3>
+
+					<!-- SIAPKAN SUB MENU SESUAI MENU -->
+					<?php
+					$menuId = $m['id'];
+					$querySubMenu = "SELECT *
+												FROM `user_sub_menu` JOIN `user_menu`
+													ON `user_sub_menu`.`menu_id` = `user_menu`.`id`
+												WHERE `user_sub_menu`.`menu_id`= $menuId
+												AND `user_sub_menu`.`is_active` = 1
+												";
+					$subMenu = $this->db->query($querySubMenu)->result_array();
+					?>
+
+					<?php foreach ($subMenu as $sm) : ?>
+
+						<ul class="nav side-menu">
+							<li>
+								<a href="<?= base_url($sm['url']); ?>">
+									<i class="<?= $sm['icon']; ?>"></i> <?= $sm['title']; ?>
+								</a>
+							</li>
+							<li>
+								<a><i class="fa fa-fw fa-users"></i> Pelanggan</a>
+							</li>
+							<li><a><i class="fa fa-fw fa-sitemap"></i> Produk <span class="fa fa-chevron-down"></span></a>
+								<ul class="nav child_menu">
+									<li><a href="tables.html">Kategori Produk</a></li>
+									<li><a href="tables_dynamic.html">Satuan Produk</a></li>
+									<li><a href="tables_dynamic.html">Produk</a></li>
+								</ul>
+							</li>
+							<li><a><i class="fa fa-fw fa-database"></i> Stok <span class="fa fa-chevron-down"></span></a>
+								<ul class="nav child_menu">
+									<li><a href="chartjs.html">Stok Masuk</a></li>
+									<li><a href="chartjs2.html">Stok Keluar</a></li>
+								</ul>
+							</li>
+							<li>
+								<a><i class="fa fa-fw fa-money"></i>Transaksi</a>
+							</li>
+							<li><a><i class="fa fa-fw fa-file"></i> Laporan <span class="fa fa-chevron-down"></span></a>
+								<ul class="nav child_menu">
+									<li><a href="e_commerce.html">Laporan Penjualan</a></li>
+									<li><a href="projects.html">Laporan Stok Masuk</a></li>
+									<li><a href="project_detail.html">Laporan Stok Keluar</a></li>
+									<li><a href="contacts.html">Laporan Piutang</a></li>
+									<li><a href="contacts.html">Laporan Absensi</a></li>
+								</ul>
+							</li>
 						</ul>
-					</li>
-					<li><a><i class="fa fa-fw fa-database"></i> Stok <span class="fa fa-chevron-down"></span></a>
-						<ul class="nav child_menu">
-							<li><a href="chartjs.html">Stok Masuk</a></li>
-							<li><a href="chartjs2.html">Stok Keluar</a></li>
-						</ul>
-					</li>
-					<li>
-						<a><i class="fa fa-fw fa-money"></i>Transaksi</a>
-					</li>
-					<li><a><i class="fa fa-fw fa-file"></i> Laporan <span class="fa fa-chevron-down"></span></a>
-						<ul class="nav child_menu">
-							<li><a href="e_commerce.html">Laporan Penjualan</a></li>
-							<li><a href="projects.html">Laporan Stok Masuk</a></li>
-							<li><a href="project_detail.html">Laporan Stok Keluar</a></li>
-							<li><a href="contacts.html">Laporan Piutang</a></li>
-							<li><a href="contacts.html">Laporan Absensi</a></li>
-						</ul>
-					</li>
-				</ul>
-			</div>
+
+					<?php endforeach; ?>
+				</div>
+			<?php endforeach; ?>
+
 			<div class="menu_section">
 				<h3>Live On</h3>
 				<ul class="nav side-menu">
