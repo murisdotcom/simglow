@@ -45,14 +45,14 @@
 				<div class="menu_section">
 					<h3><?= $m['menu']; ?></h3>
 
+
 					<!-- SIAPKAN SUB MENU SESUAI MENU -->
 					<?php
 					$menuId = $m['id'];
 					$querySubMenu = "SELECT *
-												FROM `user_sub_menu` JOIN `user_menu`
-													ON `user_sub_menu`.`menu_id` = `user_menu`.`id`
-												WHERE `user_sub_menu`.`menu_id`= $menuId
-												AND `user_sub_menu`.`is_active` = 1
+												FROM `user_sub_menu`
+												WHERE `menu_id`= $menuId
+												AND `is_active` = 1
 												";
 					$subMenu = $this->db->query($querySubMenu)->result_array();
 					?>
@@ -65,7 +65,7 @@
 									<i class="<?= $sm['icon']; ?>"></i> <?= $sm['title']; ?>
 								</a>
 							</li>
-							<li>
+							<!-- <li>
 								<a><i class="fa fa-fw fa-users"></i> Pelanggan</a>
 							</li>
 							<li><a><i class="fa fa-fw fa-sitemap"></i> Produk <span class="fa fa-chevron-down"></span></a>
@@ -92,14 +92,14 @@
 									<li><a href="contacts.html">Laporan Piutang</a></li>
 									<li><a href="contacts.html">Laporan Absensi</a></li>
 								</ul>
-							</li>
+							</li> -->
 						</ul>
 
 					<?php endforeach; ?>
+
 				</div>
 			<?php endforeach; ?>
-
-			<div class="menu_section">
+			<!-- <div class="menu_section">
 				<h3>Live On</h3>
 				<ul class="nav side-menu">
 					<li>
@@ -115,15 +115,15 @@
 							<li><a href="pricing_tables.html">Pricing Tables</a></li>
 						</ul>
 					</li>
-					<!-- <li><a href="javascript:void(0)"><i class="fa fa-laptop"></i> Landing Page <span class="label label-success pull-right">Coming Soon</span></a></li> -->
+					<li><a href="javascript:void(0)"><i class="fa fa-laptop"></i> Landing Page <span class="label label-success pull-right">Coming Soon</span></a></li>
 				</ul>
-			</div>
+			</div> -->
 
 		</div>
 		<!-- /sidebar menu -->
 
 		<!-- /menu footer buttons -->
-		<div class="sidebar-footer hidden-small">
+		<!-- <div class="sidebar-footer hidden-small">
 			<a data-toggle="tooltip" data-placement="top" title="Settings">
 				<span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
 			</a>
@@ -136,7 +136,7 @@
 			<a data-toggle="tooltip" data-placement="top" title="Logout" href="<?= base_url('auth/logout'); ?>">
 				<span class="glyphicon glyphicon-off" aria-hidden="true"></span>
 			</a>
-		</div>
+		</div> -->
 		<!-- /menu footer buttons -->
 	</div>
 </div>
