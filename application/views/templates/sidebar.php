@@ -1,7 +1,7 @@
 <div class="col-md-3 left_col">
 	<div class="left_col scroll-view">
 		<div class="navbar nav_title" style="border: 0;">
-			<a href="<?= base_url('user'); ?>" class="site_title"><img class="ml-1" style="width: 40px;" src="<?= ('assets/img/simglow.png'); ?>"> <span>SIMGLOW</span></a>
+			<a href="<?= base_url('user'); ?>" class="site_title"><img class="ml-1" style="width: 40px;" src="<?= base_url('assets/img/simglow.png'); ?>"> <span>SIMGLOW</span></a>
 		</div>
 
 		<div class="clearfix"></div>
@@ -9,7 +9,7 @@
 		<!-- menu profile quick info -->
 		<div class="profile clearfix">
 			<div class="profile_pic">
-				<img src="<?= base_url('assets/img/profile/') . $user['image']; ?>" alt="..." class="img-circle profile_img">
+				<img src="<?= base_url('assets/img/profile/') . $user['image']; ?>" class="img-circle profile_img">
 			</div>
 			<div class="profile_info">
 				<span>Welcome,</span>

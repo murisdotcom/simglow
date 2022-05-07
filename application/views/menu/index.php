@@ -16,7 +16,7 @@
 		<thead>
 			<tr>
 				<th scope="col">No</th>
-				<th scope="col">Nama Menu</th>
+				<th scope="col">Menu</th>
 				<th style="text-align:end;" scope="col">Action</th>
 			</tr>
 		</thead>
@@ -27,8 +27,8 @@
 					<th scope="row"><?= $i++; ?></th>
 					<td><?= $m['menu']; ?></td>
 					<td style="text-align: end;">
-						<a class="btn btn-success" href="">Edit</a>
-						<a class="btn btn-danger" href="">Delete</a>
+						<a class="btn btn-success btn-sm" href="">Edit</a>
+						<a class="btn btn-danger btn-sm" href="">Delete</a>
 					</td>
 				</tr>
 			<?php endforeach; ?>
