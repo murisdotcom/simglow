@@ -6,7 +6,7 @@
 
 		public function index()
 		{
-			$data['title'] = 'User | MS GLOW';
+			$data['title'] = 'Dashboard | MS GLOW';
 			$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
 			$this->load->view('templates/header', $data);
