@@ -11,4 +11,30 @@ class Admin_model extends CI_Model
 							";
 		return $this->db->query($query)->result_array();
 	}
+
+	public function getAdminById($id)
+	{
+		return $this->db->get_where('user', ['id' => $id])->row_array();
+	}
+
+	public function editAdmin()
+	{
+		$is_active =  $this->input->post('is_active', true);
+		$active = 0;
+
+		if ($is_active == true) {
+			$active = 1;
+		} else {
+			$active = 0;
+		}
+
+		$data = [
+			"name" => $this->input->post('name', true),
+			"email" => $this->input->post('email', true),
+			'role_id' => $this->input->post('role_id'),
+			"is_active" => $active
+		];
+		$this->db->where('id', $this->input->post('id'));
+		$this->db->update('user', $data);
+	}
 }

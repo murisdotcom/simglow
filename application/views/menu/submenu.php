@@ -15,7 +15,7 @@
 				<div class="col-auto">
 					<a href="" class="btn btn-primary" data-toggle="modal" data-target="#newSubMenuModal">
 						<span class="icon">
-							<i class="fa fa-fw fa-folder-plus"></i>
+							<i class="fa fa-fw fa-plus"></i>
 						</span>
 						<span class="text">
 							Add New Submenu
@@ -55,7 +55,13 @@
 						<td><?= $sm['menu']; ?></td>
 						<td><?= $sm['url']; ?></td>
 						<td><?= $sm['icon']; ?></td>
-						<td><?= $sm['is_active']; ?></td>
+						<td>
+							<?php if ($sm['is_active'] == 1) : ?>
+								<i class="fa fa-fw fa-check"></i>
+							<?php else : ?>
+								<i class="fa fa-fw fa-minus"></i>
+							<?php endif; ?>
+						</td>
 						<td style="text-align: end;">
 							<a href="<?= base_url('menu/editSubMenu/') . $sm['id']; ?>" style="color: white;" class="btn btn-success btn-circle btn-sm mb-1"><i class="fa fa-fw fa-edit"></i></a>
 							<a href="<?= base_url('menu/deleteSubMenu/') . $sm['id']; ?>" class="btn btn-danger btn-circle btn-sm mb-1 button-delete"><i class="fa fa-fw fa-trash"></i></a>

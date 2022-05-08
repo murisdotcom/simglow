@@ -4,38 +4,72 @@
 
 <!-- page content -->
 <div class="right_col" role="main">
-	<a href="" class="btn btn-primary mb-3 mt-1" data-toggle="modal" data-target="#newAdminModal">Add New Admin</a>
-	<table class="h6 table table-striped dt-responsive nowrap" style="text-align: center;">
-		<thead class="thead-dark">
-			<tr>
-				<th scope="col">No</th>
-				<th scope="col">Profile</th>
-				<th scope="col">Nama</th>
-				<th scope="col">Email</th>
-				<th scope="col">Role</th>
-				<th scope="col">Active</th>
-				<th scope="col">Action</th>
-			</tr>
-		</thead>
-		<tbody>
-			<?php $i = 1; ?>
-			<?php foreach ($Admin as $a) : ?>
-				<tr>
-					<th scope="row"><?= $i++; ?></th>
-					<td><img style="width: 70px;" src="<?= base_url('assets/img/profile/') . $a['image']; ?>"></td>
-					<td><?= $a['name']; ?></td>
-					<td><?= $a['email']; ?></td>
-					<td><?= $a['role']; ?></td>
-					<td><?= $a['is_active']; ?></td>
-					<td style="text-align: end;">
-						<a href="<?= base_url('admin/editAdmin/') . $a['id']; ?>" style="color: white;" class="btn btn-success btn-circle btn-sm mb-1"><i class="fa fa-fw fa-edit"></i></a>
-						<a href="<?= base_url('admin/deleteAdmin/') . $a['id']; ?>" class="btn btn-danger btn-circle btn-sm mb-1 button-delete"><i class="fa fa-fw fa-trash"></i></a>
-					</td>
-				</tr>
-			<?php endforeach; ?>
-		</tbody>
-	</table>
+	<div class="card shadow-sm border-bottom-primary">
+		<div class="card-header bg-white py-3">
+			<div class="row">
+				<div class="col">
+					<h4 class="h5 align-middle m-0 font-weight-bold">
+						<?= $title; ?>
+					</h4>
+				</div>
+				<div class="col-auto">
+					<a href="" class="btn btn-primary" data-toggle="modal" data-target="#newAdminModal">
+						<span class="icon">
+							<i class="fa fa-fw fa-user-plus"></i>
+						</span>
+						<span class="text">
+							Add New Admin
+						</span>
+					</a>
+				</div>
+			</div>
+		</div>
+		<?php if (validation_errors()) : ?>
+			<div class="alert alert-danger">
+				<?= validation_errors(); ?>
+			</div>
+		<?php endif; ?>
 
+		<div class="flash-data" data-flashdata="<?= $this->session->flashdata('message'); ?>">
+		</div>
+		<table class="h6 table table-striped dt-responsive nowrap" style="text-align: center;">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">No</th>
+					<th scope="col">Profile</th>
+					<th scope="col">Nama</th>
+					<th scope="col">Email</th>
+					<th scope="col">Role</th>
+					<th scope="col">Active</th>
+					<th scope="col">Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php $i = 1; ?>
+				<?php foreach ($Admin as $a) : ?>
+					<tr>
+						<th scope="row"><?= $i++; ?></th>
+						<td><img style="width: 70px;" src="<?= base_url('assets/img/profile/') . $a['image']; ?>"></td>
+						<td><?= $a['name']; ?></td>
+						<td><?= $a['email']; ?></td>
+						<td><?= $a['role']; ?></td>
+						<td>
+							<?php if ($a['is_active'] == 1) : ?>
+								<i class="fa fa-fw fa-check"></i>
+							<?php else : ?>
+								<i class="fa fa-fw fa-minus"></i>
+							<?php endif; ?>
+						</td>
+						<td style="text-align: end;">
+							<a href="<?= base_url('admin/editAdmin/') . $a['id']; ?>" style="color: white;" class="btn btn-success btn-circle btn-sm mb-1"><i class="fa fa-fw fa-edit"></i></a>
+							<a href="<?= base_url('admin/deleteAdmin/') . $a['id']; ?>" class="btn btn-danger btn-circle btn-sm mb-1 button-delete"><i class="fa fa-fw fa-trash"></i></a>
+						</td>
+					</tr>
+				<?php endforeach; ?>
+			</tbody>
+		</table>
+
+	</div>
 </div>
 <!-- /page content -->
 
@@ -54,18 +88,18 @@
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
-			<form action="<?= base_url('admin/addAdmin'); ?>" method="post">
+			<form action="" method="post">
 				<div class="modal-body">
 					<div class="form-group">
 						<input type="text" class="form-control" id="name" name="name" placeholder="Fullname">
 					</div>
 					<div class="form-group">
-						<input type="email" class="form-control" id="email" name="email" placeholder="Email adress">
+						<input type="email" class="form-control" id="email" name="email" placeholder="Email address">
 					</div>
 					<div class="form-group">
 						<select name="role_id" id="role_id" class="form-control">
-							<option value="">Select Menu</option>
-							<?php foreach ($Admin as $a) : ?>
+							<option value="">Select Role</option>
+							<?php foreach ($admin as $a) : ?>
 								<option value="<?= $a['id']; ?>"><?= $a['role']; ?></option>
 							<?php endforeach;  ?>
 						</select>
@@ -80,7 +114,7 @@
 						<div class="form-check">
 							<input class="form-check-input" type="checkbox" value="1" name="is_active" id="is_active" checked>
 							<label class="form-check-label" for="is_active">
-								Active ?
+								<h5 style="color: green">Active?</h5>
 							</label>
 						</div>
 					</div>

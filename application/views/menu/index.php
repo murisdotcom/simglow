@@ -15,7 +15,7 @@
 				<div class="col-auto">
 					<a href="" class="btn btn-primary" data-toggle="modal" data-target="#newMenuModal">
 						<span class="icon">
-							<i class="fa fa-fw fa-folder-plus"></i>
+							<i class="fa fa-fw fa-plus"></i>
 						</span>
 						<span class="text">
 							Add New Menu
