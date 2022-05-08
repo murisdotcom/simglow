@@ -11,4 +11,55 @@ class Menu_model extends CI_Model
 							";
 		return $this->db->query($query)->result_array();
 	}
+
+	public function getSubMenuById($id)
+	{
+		return $this->db->get_where('user_sub_menu', ['id' => $id])->row_array();
+	}
+
+	public function editSubMenu()
+	{
+		$is_active =  $this->input->post('is_active', true);
+		$active = 0;
+
+		if ($is_active == true) {
+			$active = 1;
+		} else {
+			$active = 0;
+		}
+
+		$data = [
+			"title" => $this->input->post('title', true),
+			'menu_id' => $this->input->post('menu_id'),
+			"url" => $this->input->post('url', true),
+			"icon" => $this->input->post('icon', true),
+			"is_active" => $active
+		];
+		$this->db->where('id', $this->input->post('id'));
+		$this->db->update('user_sub_menu', $data);
+	}
+
+	public function deleteSubMenu($id)
+	{
+		$this->db->where('id', $id);
+		$this->db->delete('user_sub_menu');
+	}
+
+	public function getMenuById($id)
+	{
+		return $this->db->get_where('user_menu', ['id' => $id])->row_array();
+	}
+
+	public function editMenu()
+	{
+		$data = ["menu" => $this->input->post('menu', true)];
+		$this->db->where('id', $this->input->post('id'));
+		$this->db->update('user_menu', $data);
+	}
+
+	public function deleteMenu($id)
+	{
+		$this->db->where('id', $id);
+		$this->db->delete('user_menu');
+	}
 }

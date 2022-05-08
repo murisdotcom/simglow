@@ -50,6 +50,10 @@
 <!-- Custom Theme Scripts -->
 <script src="<?= base_url('assets/'); ?>build/js/custom.min.js"></script>
 
+<!-- Sweatalert custome -->
+<script src="<?= base_url('assets/dist/sweetalert2.all.min.js'); ?>"></script>
+<script src="<?= base_url('assets/dist/myscript.js'); ?>"></script>
+
 </body>
 
 </html>

@@ -4,37 +4,55 @@
 
 <!-- page content -->
 <div class="right_col" role="main">
-	<div class="row">
-		<div class="col">
-			<?= form_error('menu', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
-
-			<?= $this->session->flashdata('message'); ?>
+	<div class="card shadow-sm border-bottom-primary">
+		<div class="card-header bg-white py-3">
+			<div class="row">
+				<div class="col">
+					<h4 class="h5 align-middle m-0 font-weight-bold">
+						<?= $title; ?>
+					</h4>
+				</div>
+				<div class="col-auto">
+					<a href="" class="btn btn-primary" data-toggle="modal" data-target="#newMenuModal">
+						<span class="icon">
+							<i class="fa fa-fw fa-folder-plus"></i>
+						</span>
+						<span class="text">
+							Add New Menu
+						</span>
+					</a>
+				</div>
+			</div>
 		</div>
-	</div>
-	<a href="" class="btn btn-primary mb-3 mt-1" data-toggle="modal" data-target="#newMenuModal">Add New Menu</a>
-	<table class="table">
-		<thead>
-			<tr>
-				<th scope="col">No</th>
-				<th scope="col">Menu</th>
-				<th style="text-align:end;" scope="col">Action</th>
-			</tr>
-		</thead>
-		<tbody>
-			<?php $i = 1; ?>
-			<?php foreach ($menu as $m) : ?>
-				<tr>
-					<th scope="row"><?= $i++; ?></th>
-					<td><?= $m['menu']; ?></td>
-					<td style="text-align: end;">
-						<a class="btn btn-success btn-sm" href="">Edit</a>
-						<a class="btn btn-danger btn-sm" href="">Delete</a>
-					</td>
-				</tr>
-			<?php endforeach; ?>
-		</tbody>
-	</table>
 
+		<?= form_error('menu', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
+
+		<div class="flash-data" data-flashdata="<?= $this->session->flashdata('message'); ?>"></div>
+
+		<table class="h6 table table-striped dt-responsive nowrap" style="text-align: center;">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col" style="text-align: left;">No</th>
+					<th scope="col">Menu</th>
+					<th style="text-align:end;" scope="col">Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php $i = 1; ?>
+				<?php foreach ($menu as $m) : ?>
+					<tr>
+						<th scope="row" style="text-align: left;"><?= $i++; ?></th>
+						<td><?= $m['menu']; ?></td>
+						<td style="text-align: end;">
+							<a href="<?= base_url('menu/editMenu/') . $m['id']; ?>" style="color: white;" class="btn btn-success btn-circle btn-sm mb-1"><i class="fa fa-fw fa-edit"></i></a>
+							<a href="<?= base_url('menu/deleteMenu/') . $m['id']; ?>" class="btn btn-danger btn-circle btn-sm mb-1 button-delete"><i class="fa fa-fw fa-trash"></i></a>
+						</td>
+					</tr>
+				<?php endforeach; ?>
+			</tbody>
+		</table>
+
+	</div>
 </div>
 <!-- /page content -->
 

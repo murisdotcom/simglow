@@ -19,7 +19,7 @@
 									<span>Settings</span>
 								</a> -->
 
-						<a class="dropdown-item" href="<?= base_url('auth/logout'); ?>"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
+						<a class="dropdown-item button-logout" href="<?= base_url('auth/logout'); ?>"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
 					</div>
 				</li>
 
