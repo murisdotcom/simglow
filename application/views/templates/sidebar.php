@@ -68,8 +68,8 @@
 										<li><a href="tables.html">Kategori Produk</a></li>
 										<li><a href="tables_dynamic.html">Satuan Produk</a></li>
 										<li><a href="<?= base_url($sm['url']); ?>">Produk</a></li>
-										<li><a href="<?= base_url($sm['url']); ?>">Stok Masuk</a></li>
-										<li><a href="<?= base_url($sm['url']); ?>">Stok Keluar</a></li>
+										<li><a href="">Stok Masuk</a></li>
+										<li><a href="">Stok Keluar</a></li>
 									</ul>
 								<?php else : ?>
 									<a href="<?= base_url($sm['url']); ?>">
