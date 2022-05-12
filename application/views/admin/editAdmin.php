@@ -25,10 +25,12 @@
 				<div class="form-group">
 					<label for="name">Fullname</label>
 					<input type="text" class="form-control" id="name" name="name" placeholder="Fullname" value="<?= $admin['name']; ?>">
+					<span class="form-text text-danger"><?= form_error('name'); ?></span>
 				</div>
 				<div class="form-group">
 					<label for="email">Email</label>
 					<input type="email" class="form-control" id="email" name="email" placeholder="Email address" value="<?= $admin['email']; ?>">
+					<span class="form-text text-danger"><?= form_error('email'); ?></span>
 				</div>
 				<div class="form-group">
 					<label for="role_id">Role</label>

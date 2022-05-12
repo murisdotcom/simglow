@@ -66,8 +66,8 @@ class Admin extends CI_Controller
 
 		$data['Admin'] = $this->db->get('user_role')->result_array();
 
-		$this->form_validation->set_rules('name', 'Name', 'required');
-		$this->form_validation->set_rules('email', 'Email', 'required');
+		$this->form_validation->set_rules('name', 'Name', 'required|trim');
+		$this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
 		$this->form_validation->set_rules('role_id', 'Role', 'required');
 
 		if ($this->form_validation->run() == false) {

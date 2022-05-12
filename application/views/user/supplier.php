@@ -25,7 +25,11 @@
 			</div>
 		</div>
 
-		<?= form_error('supplier', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
+		<?php if (validation_errors()) : ?>
+			<div class="alert alert-danger">
+				<?= validation_errors(); ?>
+			</div>
+		<?php endif; ?>
 
 		<div class="flash-data" data-flashdata="<?= $this->session->flashdata('message'); ?>"></div>
 

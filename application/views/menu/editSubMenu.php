@@ -25,6 +25,7 @@
 				<div class="form-group">
 					<label for="title">Nama SubMenu</label>
 					<input type="text" class="form-control" id="title" name="title" placeholder="Submenu title" value="<?= $subMenu['title']; ?>">
+					<span class="form-text text-danger"><?= form_error('title'); ?></span>
 				</div>
 				<div class="form-group">
 					<label for="menu_id">Menu</label>
@@ -41,10 +42,12 @@
 				<div class="form-group">
 					<label for="url">Submenu url</label>
 					<input type="text" class="form-control" id="url" name="url" placeholder="Submenu url" value="<?= $subMenu['url']; ?>">
+					<span class="form-text text-danger"><?= form_error('url'); ?></span>
 				</div>
 				<div class="form-group">
 					<label for="icon">Submenu icon</label>
 					<input type="text" class="form-control" id="icon" name="icon" placeholder="Submenu icon" value="<?= $subMenu['icon']; ?>">
+					<span class="form-text text-danger"><?= form_error('icon'); ?></span>
 				</div>
 				<div class="form-group">
 					<div class="form-check">
