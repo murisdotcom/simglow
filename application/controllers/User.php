@@ -87,4 +87,79 @@
 				redirect('user/supplier');
 			}
 		}
+
+		public function customer()
+		{
+			$data['title'] = 'Customer | MS GLOW';
+			$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+			// $data['status'] = $this->User_model->getStatus();
+			$data['status'] = $this->db->get('status_customer')->result_array();
+			$data['customer'] = $this->User_model->getCustomer();
+			$data['gender'] = $this->db->get('gender')->result_array();
+			$data['Customer'] = $this->db->get('customer')->result_array();
+
+			$this->form_validation->set_rules('name', 'Name', 'required');
+			$this->form_validation->set_rules('gender', 'Gender', 'required');
+			$this->form_validation->set_rules('address', 'Address', 'required');
+			$this->form_validation->set_rules('phone_number', 'Phone_number', 'required');
+			$this->form_validation->set_rules('status', 'Status', 'required');
+
+			if ($this->form_validation->run() == false) {
+				$this->load->view('templates/header', $data);
+				$this->load->view('templates/sidebar', $data);
+				$this->load->view('templates/topbar', $data);
+				$this->load->view('user/customer', $data);
+				$this->load->view('templates/footer');
+			} else {
+				$data = [
+					'name' => $this->input->post('name', true),
+					'gender' => $this->input->post('gender', true),
+					'address' => $this->input->post('address', true),
+					'phone_number' => $this->input->post('phone_number', true),
+					'status' => $this->input->post('status', true)
+				];
+				$this->db->insert('customer', $data);
+				$this->session->set_flashdata('message', 'New customer added!');
+				redirect('user/customer');
+			}
+		}
+
+		public function deleteCustomer($id)
+		{
+			$this->db->where('id', $id);
+			$this->db->delete('customer');
+			$this->session->set_flashdata('message', 'Customer berhasil dihapus!');
+			redirect('user/customer');
+		}
+
+		public function editCustomer($id)
+		{
+			$data['title'] = 'Edit Customer | MS GLOW';
+			$data['user'] = $this->db->get_where('user', ['email' =>
+			$this->session->userdata('email')])->row_array();
+
+			$data['Customer'] = $this->User_model->getCustomerById($id);
+
+			$data['status'] = $this->db->get('status_customer')->result_array();
+			$data['gender'] = $this->db->get('gender')->result_array();
+
+			$this->form_validation->set_rules('name', 'Name', 'required');
+			$this->form_validation->set_rules('gender', 'Gender', 'required');
+			$this->form_validation->set_rules('address', 'Address', 'required');
+			$this->form_validation->set_rules('phone_number', 'phone_number', 'required|numeric');
+			$this->form_validation->set_rules('status', 'Status', 'required');
+
+			if ($this->form_validation->run() == false) {
+				$this->load->view('templates/header', $data);
+				$this->load->view('templates/sidebar', $data);
+				$this->load->view('templates/topbar', $data);
+				$this->load->view('user/editCustomer', $data);
+				$this->load->view('templates/footer');
+			} else {
+				$this->User_model->editCustomer();
+				$this->session->set_flashdata('message', 'Customer berhasil diubah!');
+				redirect('user/customer');
+			}
+		}
 	}

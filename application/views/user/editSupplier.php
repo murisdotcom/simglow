@@ -23,14 +23,17 @@
 			<form action="" method="post">
 				<input type="hidden" name="id" value="<?= $Supplier['id']; ?>">
 				<div class="form-group">
+					<label for="name">Supplier Name</label>
 					<input type="text" class="form-control" id="name" name="name" placeholder="Supplier name" value="<?= $Supplier['name']; ?>">
 					<span class="form-text text-danger"><?= form_error('name'); ?></span>
 				</div>
 				<div class="form-group">
+					<label for="address">Address</label>
 					<input type="text" class="form-control" id="address" name="address" placeholder="Supplier address" value="<?= $Supplier['address']; ?>">
 					<span class="form-text text-danger pl-2"><?= form_error('address'); ?></span>
 				</div>
 				<div class="form-group">
+					<label for="phone_number">Phone Number</label>
 					<input type="text" class="form-control" id="phone_number" name="phone_number" placeholder="Supplier phone_number" value="<?= $Supplier['phone_number']; ?>">
 					<span class="form-text text-danger pl-2"><?= form_error('phone_number'); ?></span>
 				</div>
