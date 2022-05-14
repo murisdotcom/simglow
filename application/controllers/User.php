@@ -93,11 +93,9 @@
 			$data['title'] = 'Customer | MS GLOW';
 			$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
-			// $data['status'] = $this->User_model->getStatus();
 			$data['status'] = $this->db->get('status_customer')->result_array();
 			$data['customer'] = $this->User_model->getCustomer();
 			$data['gender'] = $this->db->get('gender')->result_array();
-			$data['Customer'] = $this->db->get('customer')->result_array();
 
 			$this->form_validation->set_rules('name', 'Name', 'required');
 			$this->form_validation->set_rules('gender', 'Gender', 'required');
