@@ -20,15 +20,6 @@ class User_model extends CI_Model
 		$this->db->update('supplier', $data);
 	}
 
-	// public function getStatus()
-	// {
-	// 	$query = "SELECT `customer`.*, `status_customer`.*
-	// 						FROM `customer` JOIN `status_customer`
-	// 						ON `customer`.`status` = `status_customer`.`id`
-	// 						";
-	// 	return $this->db->query($query)->result_array();
-	// }
-
 	public function getCustomer()
 	{
 		$query = "SELECT `customer`.*, `status_customer`.`status`, `gender`.`gender`
