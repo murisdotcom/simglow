@@ -160,4 +160,88 @@
 				redirect('user/customer');
 			}
 		}
+
+		public function product()
+		{
+			$data['title'] = 'Product | MS GLOW';
+			$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+			$data['product'] = $this->User_model->getProduct();
+			$data['category'] = $this->db->get('category')->result_array();
+			$data['unit'] = $this->db->get('unit')->result_array();
+
+			$this->form_validation->set_rules(
+				'barcode',
+				'Barcode',
+				'required|is_unique[product.barcode]',
+				[
+					'is_unique' => 'This Barcode has already registered!'
+				]
+			);
+			$this->form_validation->set_rules('name_product', 'Product_Name', 'required');
+			$this->form_validation->set_rules('category', 'Category', 'required');
+			$this->form_validation->set_rules('unit', 'Unit', 'required');
+			$this->form_validation->set_rules('price', 'Price', 'required');
+			$this->form_validation->set_rules('stock', 'Stock', 'required');
+
+			if ($this->form_validation->run() == false) {
+				$this->load->view('templates/header', $data);
+				$this->load->view('templates/sidebar', $data);
+				$this->load->view('templates/topbar', $data);
+				$this->load->view('user/product', $data);
+				$this->load->view('templates/footer');
+			} else {
+				$data = [
+					'barcode' => $this->input->post('barcode', true),
+					'name_product' => $this->input->post('name_product', true),
+					'category' => $this->input->post('category', true),
+					'unit' => $this->input->post('unit', true),
+					'price' => $this->input->post('price', true),
+					'stock' => $this->input->post('stock', true),
+					'sold' => '0'
+				];
+				$this->db->insert('product', $data);
+				$this->session->set_flashdata('message', 'New product added!');
+				redirect('user/product');
+			}
+		}
+
+		public function deleteProduct($id)
+		{
+			$this->db->where('id', $id);
+			$this->db->delete('product');
+			$this->session->set_flashdata('message', 'Product berhasil dihapus!');
+			redirect('user/product');
+		}
+
+		public function editProduct($id)
+		{
+			$data['title'] = 'Edit Product | MS GLOW';
+			$data['user'] = $this->db->get_where('user', ['email' =>
+			$this->session->userdata('email')])->row_array();
+
+			$data['Product'] = $this->User_model->getProductById($id);
+
+			$data['category'] = $this->db->get('category')->result_array();
+			$data['unit'] = $this->db->get('unit')->result_array();
+
+			$this->form_validation->set_rules('barcode', 'Barcode', 'required');
+			$this->form_validation->set_rules('name_product', 'Product_Name', 'required');
+			$this->form_validation->set_rules('category', 'Category', 'required');
+			$this->form_validation->set_rules('unit', 'Unit', 'required');
+			$this->form_validation->set_rules('price', 'Price', 'required');
+			$this->form_validation->set_rules('stock', 'Stock', 'required');
+
+			if ($this->form_validation->run() == false) {
+				$this->load->view('templates/header', $data);
+				$this->load->view('templates/sidebar', $data);
+				$this->load->view('templates/topbar', $data);
+				$this->load->view('user/editProduct', $data);
+				$this->load->view('templates/footer');
+			} else {
+				$this->User_model->editProduct();
+				$this->session->set_flashdata('message', 'Product berhasil diubah!');
+				redirect('user/product');
+			}
+		}
 	}

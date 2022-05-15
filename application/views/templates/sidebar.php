@@ -61,15 +61,15 @@
 
 						<ul class="nav side-menu">
 							<li>
-								<?php if ($sm['title'] == 'Produk') : ?>
+								<?php if ($sm['title'] == 'Product') : ?>
 									<a>
 										<i class="<?= $sm['icon']; ?>"></i> <?= $sm['title']; ?><span class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
-										<li><a href="tables.html">Kategori Produk</a></li>
-										<li><a href="tables_dynamic.html">Satuan Produk</a></li>
-										<li><a href="<?= base_url($sm['url']); ?>">Produk</a></li>
-										<li><a href="">Stok Masuk</a></li>
-										<li><a href="">Stok Keluar</a></li>
+										<li><a href="<?= base_url('user/category'); ?>">Category Product</a></li>
+										<li><a href="<?= base_url('user/category'); ?>">Unit Product</a></li>
+										<li><a href="<?= base_url('user/product'); ?>">Product</a></li>
+										<li><a href="<?= base_url('user/stock_in'); ?>">Stock In</a></li>
+										<li><a href="<?= base_url('user/stock_out'); ?>">Stock Out</a></li>
 									</ul>
 								<?php else : ?>
 									<a href="<?= base_url($sm['url']); ?>">

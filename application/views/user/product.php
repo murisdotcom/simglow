@@ -13,12 +13,12 @@
 					</h4>
 				</div>
 				<div class="col-auto">
-					<a href="" class="btn btn-primary" data-toggle="modal" data-target="#newSupplierModal">
+					<a href="" class="btn btn-primary" data-toggle="modal" data-target="#newProductModal">
 						<span class="icon">
 							<i class="fa fa-fw fa-plus"></i>
 						</span>
 						<span class="text">
-							Add New Customer
+							Add New Product
 						</span>
 					</a>
 				</div>
@@ -37,27 +37,31 @@
 			<thead class="thead-dark">
 				<tr>
 					<th scope="col" style="text-align: left;">No</th>
+					<th scope="col">Barcode</th>
 					<th scope="col">Name</th>
-					<th scope="col">Status</th>
-					<th scope="col">Gender</th>
-					<th scope="col">Address</th>
-					<th scope="col">Phone Number</th>
+					<th scope="col">Category</th>
+					<th scope="col">Unit</th>
+					<th scope="col">Price</th>
+					<th scope="col">Stock</th>
+					<th scope="col">Sold</th>
 					<th style="text-align:end;" scope="col">Action</th>
 				</tr>
 			</thead>
 			<tbody>
 				<?php $i = 1; ?>
-				<?php foreach ($customer as $c) : ?>
+				<?php foreach ($product as $p) : ?>
 					<tr>
 						<th scope="row" style="text-align: left;"><?= $i++; ?></th>
-						<td><?= $c['name']; ?></td>
-						<td><?= $c['status']; ?></td>
-						<td><?= $c['gender']; ?></td>
-						<td><?= $c['address']; ?></td>
-						<td><?= $c['phone_number']; ?></td>
+						<td><?= $p['barcode']; ?></td>
+						<td><?= $p['name_product']; ?></td>
+						<td><?= $p['category']; ?></td>
+						<td><?= $p['unit']; ?></td>
+						<td><?= $p['price']; ?></td>
+						<td><?= $p['stock']; ?></td>
+						<td><?= $p['sold']; ?></td>
 						<td style="text-align: end;">
-							<a href="<?= base_url('user/editCustomer/') . $c['id']; ?>" style="color: white;" class="btn btn-success btn-circle btn-sm mb-1"><i class="fa fa-fw fa-edit"></i></a>
-							<a href="<?= base_url('user/deleteCustomer/') . $c['id']; ?>" class="btn btn-danger btn-circle btn-sm mb-1 button-delete"><i class="fa fa-fw fa-trash"></i></a>
+							<a href="<?= base_url('user/editProduct/') . $p['id']; ?>" style="color: white;" class="btn btn-success btn-circle btn-sm mb-1"><i class="fa fa-fw fa-edit"></i></a>
+							<a href="<?= base_url('user/deleteProduct/') . $p['id']; ?>" class="btn btn-danger btn-circle btn-sm mb-1 button-delete"><i class="fa fa-fw fa-trash"></i></a>
 						</td>
 					</tr>
 				<?php endforeach; ?>
@@ -74,41 +78,44 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="newSupplierModal" tabindex="-1" aria-labelledby="newSupplierModalLabel" aria-hidden="true">
+<div class="modal fade" id="newProductModal" tabindex="-1" aria-labelledby="newProductModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="newSupplierModalLabel">Add New Customer</h5>
+				<h5 class="modal-title" id="newProductModalLabel">Add New Product</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
-			<form action="<?= base_url('user/customer'); ?>" method="post">
+			<form action="<?= base_url('user/product'); ?>" method="post">
 				<div class="modal-body">
 					<div class="form-group">
-						<input type="text" class="form-control" id="name" name="name" placeholder="Customer name">
+						<input type="text" class="form-control" id="barcode" name="barcode" placeholder="Barcode">
 					</div>
 					<div class="form-group">
-						<select name="gender" id="gender" class="form-control">
-							<option value="">Gender</option>
-							<?php foreach ($gender as $g) : ?>
-								<option value="<?= $g['id']; ?>"><?= $g['gender']; ?></option>
+						<input type="text" class="form-control" id="name_product" name="name_product" placeholder="Product name">
+					</div>
+					<div class="form-group">
+						<select name="category" id="category" class="form-control">
+							<option value="">Category</option>
+							<?php foreach ($category as $c) : ?>
+								<option value="<?= $c['id']; ?>"><?= $c['category']; ?></option>
 							<?php endforeach;  ?>
 						</select>
 					</div>
 					<div class="form-group">
-						<input type="text" class="form-control" id="address" name="address" placeholder="Address">
-					</div>
-					<div class="form-group">
-						<input type="text" class="form-control" id="phone_number" name="phone_number" placeholder="Phone number">
-					</div>
-					<div class="form-group">
-						<select name="status" id="status" class="form-control">
-							<option value="">Status</option>
-							<?php foreach ($status as $s) : ?>
-								<option value="<?= $s['id']; ?>"><?= $s['status']; ?></option>
+						<select name="unit" id="unit" class="form-control">
+							<option value="">Unit</option>
+							<?php foreach ($unit as $u) : ?>
+								<option value="<?= $u['id']; ?>"><?= $u['unit']; ?></option>
 							<?php endforeach;  ?>
 						</select>
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control" id="price" name="price" placeholder="Price">
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control" id="stock" name="stock" placeholder="Stock">
 					</div>
 				</div>
 				<div class="modal-footer">
