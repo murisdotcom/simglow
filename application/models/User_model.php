@@ -90,4 +90,18 @@ class User_model extends CI_Model
 		$this->db->where('id', $this->input->post('id'));
 		$this->db->update('category', $data);
 	}
+
+	public function getUnitById($id)
+	{
+		return $this->db->get_where('unit', ['id' => $id])->row_array();
+	}
+
+	public function editUnit()
+	{
+		$data = [
+			"unit" => $this->input->post('unit', true)
+		];
+		$this->db->where('id', $this->input->post('id'));
+		$this->db->update('unit', $data);
+	}
 }

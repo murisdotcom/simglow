@@ -66,7 +66,7 @@
 										<i class="<?= $sm['icon']; ?>"></i> <?= $sm['title']; ?><span class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
 										<li><a href="<?= base_url('user/category'); ?>">Category Product</a></li>
-										<li><a href="<?= base_url('user/category'); ?>">Unit Product</a></li>
+										<li><a href="<?= base_url('user/unit'); ?>">Unit Product</a></li>
 										<li><a href="<?= base_url('user/product'); ?>">Product</a></li>
 										<li><a href="<?= base_url('user/stock_in'); ?>">Stock In</a></li>
 										<li><a href="<?= base_url('user/stock_out'); ?>">Stock Out</a></li>

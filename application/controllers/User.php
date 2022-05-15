@@ -249,7 +249,7 @@
 
 		public function category()
 		{
-			$data['title'] = 'Product | MS GLOW';
+			$data['title'] = 'Category | MS GLOW';
 			$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
 			$data['category'] = $this->db->get('category')->result_array();
@@ -295,12 +295,7 @@
 
 			$data['Category'] = $this->User_model->getCategoryById($id);
 
-			$this->form_validation->set_rules('barcode', 'Barcode', 'required');
-			$this->form_validation->set_rules('name_product', 'Product_Name', 'required');
 			$this->form_validation->set_rules('category', 'Category', 'required');
-			$this->form_validation->set_rules('unit', 'Unit', 'required');
-			$this->form_validation->set_rules('price', 'Price', 'required');
-			$this->form_validation->set_rules('stock', 'Stock', 'required');
 
 			if ($this->form_validation->run() == false) {
 				$this->load->view('templates/header', $data);
@@ -312,6 +307,69 @@
 				$this->User_model->editCategory();
 				$this->session->set_flashdata('message', 'Category berhasil diubah!');
 				redirect('user/category');
+			}
+		}
+
+		public function unit()
+		{
+			$data['title'] = 'Unit | MS GLOW';
+			$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+			$data['unit'] = $this->db->get('unit')->result_array();
+
+			$this->form_validation->set_rules(
+				'unit',
+				'unit',
+				'required|is_unique[product.barcode]',
+				[
+					'is_unique' => 'This Barcode has already registered!'
+				]
+			);
+
+			if ($this->form_validation->run() == false) {
+				$this->load->view('templates/header', $data);
+				$this->load->view('templates/sidebar', $data);
+				$this->load->view('templates/topbar', $data);
+				$this->load->view('user/unit', $data);
+				$this->load->view('templates/footer');
+			} else {
+				$data = [
+					'unit' => $this->input->post('unit', true)
+				];
+				$this->db->insert('unit', $data);
+				$this->session->set_flashdata('message', 'New unit added!');
+				redirect('user/unit');
+			}
+		}
+
+		public function deleteUnit($id)
+		{
+			$this->db->where('id', $id);
+			$this->db->delete('unit');
+			$this->session->set_flashdata('message', 'Unit berhasil dihapus!');
+			redirect('user/unit');
+		}
+
+		public function editUnit($id)
+		{
+			$data['title'] = 'Edit Unit | MS GLOW';
+			$data['user'] = $this->db->get_where('user', ['email' =>
+			$this->session->userdata('email')])->row_array();
+
+			$data['Unit'] = $this->User_model->getUnitById($id);
+
+			$this->form_validation->set_rules('Unit', 'Unit', 'required');
+
+			if ($this->form_validation->run() == false) {
+				$this->load->view('templates/header', $data);
+				$this->load->view('templates/sidebar', $data);
+				$this->load->view('templates/topbar', $data);
+				$this->load->view('user/editUnit', $data);
+				$this->load->view('templates/footer');
+			} else {
+				$this->User_model->editUnit();
+				$this->session->set_flashdata('message', 'Unit berhasil diubah!');
+				redirect('user/Unit');
 			}
 		}
 	}
