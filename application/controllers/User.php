@@ -358,7 +358,7 @@
 
 			$data['Unit'] = $this->User_model->getUnitById($id);
 
-			$this->form_validation->set_rules('Unit', 'Unit', 'required');
+			$this->form_validation->set_rules('unit', 'Unit', 'required');
 
 			if ($this->form_validation->run() == false) {
 				$this->load->view('templates/header', $data);
