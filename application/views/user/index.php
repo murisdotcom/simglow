@@ -151,11 +151,26 @@
 					<div class="x_content">
 						<div style="height: 250px;max-height: 250px; overflow-y: scroll;">
 							<ul class="list-group" id="stok_produk">
-								<table>
-									<tr>
-										<td>acne</td>
-										<td style="text-align: center;">2</td>
-									</tr>
+								<table class="h6 table table-striped dt-responsive nowrap" style="text-align: center;">
+									<thead class="thead-dark">
+										<tr>
+											<th scope="col" style="text-align: left;">No</th>
+											<th scope="col">Name</th>
+											<th scope="col">Price</th>
+											<th scope="col">Stock</th>
+										</tr>
+									</thead>
+									<tbody>
+										<?php $i = 1; ?>
+										<?php foreach ($product as $p) : ?>
+											<tr>
+												<th scope="row" style="text-align: left;"><?= $i++; ?></th>
+												<td><?= $p['name_product']; ?></td>
+												<td><?= $p['price']; ?></td>
+												<td><?= $p['stock']; ?></td>
+											</tr>
+										<?php endforeach; ?>
+									</tbody>
 								</table>
 							</ul>
 						</div>

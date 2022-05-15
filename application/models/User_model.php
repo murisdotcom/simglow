@@ -76,4 +76,18 @@ class User_model extends CI_Model
 		$this->db->where('id', $this->input->post('id'));
 		$this->db->update('product', $data);
 	}
+
+	public function getCategoryById($id)
+	{
+		return $this->db->get_where('category', ['id' => $id])->row_array();
+	}
+
+	public function editCategory()
+	{
+		$data = [
+			"category" => $this->input->post('category', true)
+		];
+		$this->db->where('id', $this->input->post('id'));
+		$this->db->update('category', $data);
+	}
 }

@@ -17,6 +17,8 @@
 			$data['title'] = 'Dashboard | MS GLOW';
 			$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
+			$data['product'] = $this->db->get('product')->result_array();
+
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/sidebar', $data);
 			$this->load->view('templates/topbar', $data);
@@ -242,6 +244,74 @@
 				$this->User_model->editProduct();
 				$this->session->set_flashdata('message', 'Product berhasil diubah!');
 				redirect('user/product');
+			}
+		}
+
+		public function category()
+		{
+			$data['title'] = 'Product | MS GLOW';
+			$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+			$data['category'] = $this->db->get('category')->result_array();
+
+			$this->form_validation->set_rules(
+				'category',
+				'Category',
+				'required|is_unique[product.barcode]',
+				[
+					'is_unique' => 'This Barcode has already registered!'
+				]
+			);
+
+			if ($this->form_validation->run() == false) {
+				$this->load->view('templates/header', $data);
+				$this->load->view('templates/sidebar', $data);
+				$this->load->view('templates/topbar', $data);
+				$this->load->view('user/category', $data);
+				$this->load->view('templates/footer');
+			} else {
+				$data = [
+					'category' => $this->input->post('category', true)
+				];
+				$this->db->insert('category', $data);
+				$this->session->set_flashdata('message', 'New category added!');
+				redirect('user/category');
+			}
+		}
+
+		public function deleteCategory($id)
+		{
+			$this->db->where('id', $id);
+			$this->db->delete('category');
+			$this->session->set_flashdata('message', 'Category berhasil dihapus!');
+			redirect('user/category');
+		}
+
+		public function editCategory($id)
+		{
+			$data['title'] = 'Edit Category | MS GLOW';
+			$data['user'] = $this->db->get_where('user', ['email' =>
+			$this->session->userdata('email')])->row_array();
+
+			$data['Category'] = $this->User_model->getCategoryById($id);
+
+			$this->form_validation->set_rules('barcode', 'Barcode', 'required');
+			$this->form_validation->set_rules('name_product', 'Product_Name', 'required');
+			$this->form_validation->set_rules('category', 'Category', 'required');
+			$this->form_validation->set_rules('unit', 'Unit', 'required');
+			$this->form_validation->set_rules('price', 'Price', 'required');
+			$this->form_validation->set_rules('stock', 'Stock', 'required');
+
+			if ($this->form_validation->run() == false) {
+				$this->load->view('templates/header', $data);
+				$this->load->view('templates/sidebar', $data);
+				$this->load->view('templates/topbar', $data);
+				$this->load->view('user/editCategory', $data);
+				$this->load->view('templates/footer');
+			} else {
+				$this->User_model->editCategory();
+				$this->session->set_flashdata('message', 'Category berhasil diubah!');
+				redirect('user/category');
 			}
 		}
 	}
