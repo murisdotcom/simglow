@@ -104,4 +104,11 @@ class User_model extends CI_Model
 		$this->db->where('id', $this->input->post('id'));
 		$this->db->update('unit', $data);
 	}
+
+	public function stockOut($id)
+	{
+		$this->db->select('stock');
+		$this->db->where('id', $id);
+		return $this->db->get('product')->row();
+	}
 }

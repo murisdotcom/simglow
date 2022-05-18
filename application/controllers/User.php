@@ -372,4 +372,72 @@
 				redirect('user/Unit');
 			}
 		}
+
+		public function stock_in()
+		{
+			$data['title'] = 'Stock In | MS GLOW';
+			$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+			$data['stock_in'] = $this->db->get('stock_in')->result_array();
+			$data['supplier'] = $this->db->get('supplier')->result_array();
+			$data['product'] = $this->db->get('product')->result_array();
+
+			$this->form_validation->set_rules('date', 'Date', 'required');
+			$this->form_validation->set_rules('barcode', 'Barcode', 'required');
+			$this->form_validation->set_rules('total', 'Total', 'required');
+			$this->form_validation->set_rules('description', 'Description', 'required');
+			$this->form_validation->set_rules('supplier', 'Supplier', 'required');
+
+			if ($this->form_validation->run() == false) {
+				$this->load->view('templates/header', $data);
+				$this->load->view('templates/sidebar', $data);
+				$this->load->view('templates/topbar', $data);
+				$this->load->view('user/stock_in', $data);
+				$this->load->view('templates/footer');
+			} else {
+				$data = [
+					'date' => time(),
+					'barcode' => $this->input->post('barcode', true),
+					'total' => $this->input->post('total', true),
+					'description' => $this->input->post('description', true),
+					'supplier' => $this->input->post('supplier', true)
+				];
+				$this->db->insert('stock_in', $data);
+				$this->session->set_flashdata('message', 'New stock added!');
+				redirect('user/stock_in');
+			}
+		}
+
+		public function stock_out()
+		{
+			$data['title'] = 'Stock Out | MS GLOW';
+			$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+			$data['stock_out'] = $this->db->get('stock_out')->result_array();
+			$data['product'] = $this->db->get('product')->result_array();
+
+			$this->form_validation->set_rules('date', 'Date', 'required');
+			$this->form_validation->set_rules('barcode', 'Barcode', 'required');
+			$this->form_validation->set_rules('total', 'Total', 'required');
+
+			if ($this->form_validation->run() == false) {
+				$this->load->view('templates/header', $data);
+				$this->load->view('templates/sidebar', $data);
+				$this->load->view('templates/topbar', $data);
+				$this->load->view('user/stock_out', $data);
+				$this->load->view('templates/footer');
+			} else {
+				$data = [
+					'date' => time(),
+					'barcode' => $this->input->post('barcode', true),
+					'total' => $this->input->post('total', true),
+					'description' => $this->input->post('description', true),
+					'supplier' => $this->input->post('supplier', true)
+				];
+				$this->db->insert('stock_out', $data);
+				// $this->User_model->stockOut();
+				$this->session->set_flashdata('message', 'Stocked Out!');
+				redirect('user/stock_out');
+			}
+		}
 	}

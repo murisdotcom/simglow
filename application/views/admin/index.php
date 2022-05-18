@@ -41,6 +41,7 @@
 					<th scope="col">Email</th>
 					<th scope="col">Role</th>
 					<th scope="col">Active</th>
+					<th scope="col">Member Since</th>
 					<th scope="col">Action</th>
 				</tr>
 			</thead>
@@ -60,6 +61,7 @@
 								<i class="fa fa-fw fa-minus"></i>
 							<?php endif; ?>
 						</td>
+						<td><?= date('d F Y', $a['date_created']); ?></td>
 						<td style="text-align: end;">
 							<a href="<?= base_url('admin/editAdmin/') . $a['id']; ?>" style="color: white;" class="btn btn-success btn-circle btn-sm mb-1"><i class="fa fa-fw fa-edit"></i></a>
 							<a href="<?= base_url('admin/deleteAdmin/') . $a['id']; ?>" class="btn btn-danger btn-circle btn-sm mb-1 button-delete"><i class="fa fa-fw fa-trash"></i></a>
