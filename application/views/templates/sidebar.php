@@ -71,6 +71,13 @@
 										<li><a href="<?= base_url('user/stock_in'); ?>">Stock In</a></li>
 										<li><a href="<?= base_url('user/stock_out'); ?>">Stock Out</a></li>
 									</ul>
+								<?php elseif ($sm['title'] == 'Settings') : ?>
+									<a>
+										<i class="<?= $sm['icon']; ?>"></i> <?= $sm['title']; ?><span class="fa fa-chevron-down"></span></a>
+									<ul class="nav child_menu">
+										<li><a href="<?= base_url('admin'); ?>"><i class="fa fa-fw fa-user"></i> Admin</a></li>
+										<li><a href="<?= base_url('admin/role'); ?>"><i class="fa fa-fw fa-universal-access"></i> Role Access</a></li>
+									</ul>
 								<?php else : ?>
 									<a href="<?= base_url($sm['url']); ?>">
 										<i class="<?= $sm['icon']; ?>"></i> <?= $sm['title']; ?>

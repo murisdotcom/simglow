@@ -37,4 +37,18 @@ class Admin_model extends CI_Model
 		$this->db->where('id', $this->input->post('id'));
 		$this->db->update('user', $data);
 	}
+
+	public function editRole()
+	{
+		$data = [
+			"role" => $this->input->post('role', true)
+		];
+		$this->db->where('id', $this->input->post('id'));
+		$this->db->update('user_role', $data);
+	}
+
+	public function getRoleById($id)
+	{
+		return $this->db->get_where('user_role', ['id' => $id])->row_array();
+	}
 }

@@ -29,6 +29,9 @@
 
 	<!-- Custom Theme Style -->
 	<link href="<?= base_url('assets/'); ?>build/css/custom.min.css" rel="stylesheet">
+
+	<!-- Custome font awesome -->
+	<link href="<?= base_url('assets/fontawesome/css/all.css'); ?>" rel="stylesheet">
 </head>
 
 <body class="nav-md">
