@@ -12,12 +12,15 @@
 					<div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
 						<a class="dropdown-item" href="<?= base_url('user/editProfile/') . $user['id']; ?>"><i class="fa fa-user pull-right"></i> Profile</a>
 
+						<a class="dropdown-item" href="<?= base_url('user/changePassword/') . $user['id']; ?>"><i class="fa fa-key pull-right"></i>Change Password
+						</a>
+
 						<a class="dropdown-item" href="javascript:;"><i class="fa fa-calendar pull-right"></i> Absensi</a>
 
 						<!-- <a class="dropdown-item" href="javascript:;"><i class="fa fa-gear pull-right"></i>
-									<span class="badge bg-red pull-right">50%</span>
-									<span>Settings</span>
-								</a> -->
+							<span class="badge bg-red pull-right">50%</span>
+							<span>Settings</span>
+						</a> -->
 
 						<a class="dropdown-item button-logout" href="<?= base_url('auth/logout'); ?>"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
 					</div>
