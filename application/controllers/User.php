@@ -26,6 +26,56 @@
 			$this->load->view('templates/footer');
 		}
 
+		public function editProfile()
+		{
+			$data['title'] = 'Edit Profile | MS GLOW';
+			$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+			// $data['User'] = $this->User_model->getUserById($id);
+
+			$this->form_validation->set_rules('name', 'Name', 'required|trim');
+
+			if ($this->form_validation->run() == false) {
+				$this->load->view('templates/header', $data);
+				$this->load->view('templates/sidebar', $data);
+				$this->load->view('templates/topbar', $data);
+				$this->load->view('user/editProfile', $data);
+				$this->load->view('templates/footer');
+			} else {
+				$name = $this->input->post('name', true);
+				$email = $this->input->post('email', true);
+
+				// cek jika ada gambar yang di upload
+				$upload_image = $_FILES['image']['name'];
+				if ($upload_image) {
+					$config['allowed_types'] = 'gif|jpg|png';
+					$config['max_size'] = '2048';
+					$config['upload_path'] = './assets/img/profile/';
+
+					$this->load->library('upload', $config);
+
+					if ($this->upload->do_upload('image')) {
+						$old_image = $data['user']['image'];
+						if ($old_image != 'default.jpg') {
+							unlink(FCPATH . 'assets/img/profile/' . $old_image);
+						}
+
+						$new_image = $this->upload->data('file_name');
+						$this->db->set('image', $new_image);
+					} else {
+						echo $this->upload->display_errors();
+					}
+				}
+
+				$this->db->set('name', $name);
+				$this->db->where('email', $email);
+				$this->db->update('user');
+
+				$this->session->set_flashdata('message', 'Profile changed!');
+				redirect('user');
+			}
+		}
+
 		public function supplier()
 		{
 			$data['title'] = 'Supplier | MS GLOW';
@@ -59,7 +109,7 @@
 		{
 			$this->db->where('id', $id);
 			$this->db->delete('supplier');
-			$this->session->set_flashdata('message', 'Supplier berhasil dihapus!');
+			$this->session->set_flashdata('message', 'Supplier deleted!');
 			redirect('user/supplier');
 		}
 
@@ -85,7 +135,7 @@
 				$this->load->view('templates/footer');
 			} else {
 				$this->User_model->editSupplier();
-				$this->session->set_flashdata('message', 'Supplier berhasil diubah!');
+				$this->session->set_flashdata('message', 'Supplier changed!');
 				redirect('user/supplier');
 			}
 		}

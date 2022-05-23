@@ -10,7 +10,7 @@
 						<img src="<?= base_url('assets/img/profile/') . $user['image']; ?>" alt=""> <?= $user['name']; ?>
 					</a>
 					<div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" data-toggle="modal" data-target="#profile"><i class="fa fa-user pull-right"></i> Profile</a>
+						<a class="dropdown-item" href="<?= base_url('user/editProfile/') . $user['id']; ?>"><i class="fa fa-user pull-right"></i> Profile</a>
 
 						<a class="dropdown-item" href="javascript:;"><i class="fa fa-calendar pull-right"></i> Absensi</a>
 

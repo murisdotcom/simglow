@@ -14,6 +14,15 @@
 				</div>
 			</div>
 		</div>
+
+		<?php if (validation_errors()) : ?>
+			<div class="alert alert-danger">
+				<?= validation_errors(); ?>
+			</div>
+		<?php endif; ?>
+
+		<div class="flash-data" data-flashdata="<?= $this->session->flashdata('message'); ?>"></div>
+
 		<!-- top tiles -->
 		<div class="col" style="display: inline-block;">
 			<div class="tile_count" style="text-align: center;">
@@ -240,7 +249,7 @@
 		</div>
 
 		<!-- Modal -->
-		<div class="modal fade" id="profile" tabindex="-1" aria-labelledby="profileLabel" aria-hidden="true">
+		<!-- <div class="modal fade" id="profile" tabindex="-1" aria-labelledby="profileLabel" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
@@ -266,7 +275,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> -->
 
 
 		<!-- <div class="row">
