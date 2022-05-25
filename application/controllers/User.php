@@ -18,6 +18,10 @@
 			$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
 			$data['product'] = $this->db->get('product')->result_array();
+			$data['customer'] = $this->db->get_where('customer', ['status' => 2])->num_rows();
+			$data['stock_in'] = $this->db->get_where('stock_in', 'date')->num_rows();
+			$data['stock_out'] = $this->db->get_where('stock_out', 'date')->num_rows();
+			$data['allproduct'] = $this->User_model->totalStock();
 
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/sidebar', $data);

@@ -28,28 +28,46 @@
 			<div class="tile_count" style="text-align: center;">
 				<div class="col-md-2 tile_stats_count">
 					<span class="count_top"><i class="fa fa-user"></i> Total Reseller</span>
-					<div class="count">2500</div>
-					<span class="count_bottom"><i class="green">4% </i> From last Week</span>
+					<div class="count">
+						<?= $customer; ?>
+					</div>
+					<a href="<?= base_url('user/customer'); ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+					<!-- <span class="count_bottom"><i class="green">4% </i> From last Week</span> -->
 				</div>
 				<div class="col-md-2 tile_stats_count">
-					<span class="count_top"><i class="fa fa-fw fa-shopping-cart"></i> Transaksi Penjualan</span>
+					<span class="count_top"><i class="fa fa-fw fa-shopping-cart"></i> Transaksi Penjualan Hari Ini</span>
 					<div class="count">123.50</div>
-					<span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>3% </i> From last Week</span>
+					<a href="" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+					<!-- <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>3% </i> From last Week</span> -->
 				</div>
 				<div class="col-md-2 tile_stats_count">
 					<span class="count_top"><i class="fa fa-fw fa-plus"></i> Stok Masuk Hari Ini</span>
-					<div class="count green">2,500</div>
-					<span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
+					<div class="count green">
+						<?= $stock_in; ?>
+					</div>
+					<a href="<?= base_url('user/stock_in'); ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+					<!-- <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span> -->
+				</div>
+				<div class="col-md-2 tile_stats_count">
+					<span class="count_top"><i class="fa fa-fw fa-minus"></i> Stok Keluar Hari Ini</span>
+					<div class="count red">
+						<?= $stock_out; ?>
+					</div>
+					<a href="<?= base_url('user/stock_out'); ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+					<!-- <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span> -->
 				</div>
 				<div class="col-md-2 tile_stats_count">
 					<span class="count_top"><i class="fa fa-fw fa-money"></i> Total Penjualan Bulan Ini</span>
-					<div class="count">4,567</div>
-					<span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i>12% </i> From last Week</span>
+					<div class="count blue">4,567</div>
+					<a href="" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+					<!-- <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i>12% </i> From last Week</span> -->
 				</div>
 				<div class="col-md-2 tile_stats_count">
-					<span class="count_top"><i class="fa fa-fw fa-bank"></i> Total Piutang</span>
-					<div class="count">4,567</div>
-					<span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i>12% </i> From last Week</span>
+					<span class="count_top"><i class="fa fa-fw fa-bank"></i> Total Stok Barang</span>
+					<div class="count">
+						<?= $allproduct; ?> pcs</div>
+					<a href="<?= base_url('user/product'); ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+					<!-- <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i>12% </i> From last Week</span> -->
 				</div>
 			</div>
 		</div>

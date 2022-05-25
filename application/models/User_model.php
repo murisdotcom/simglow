@@ -3,6 +3,17 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class User_model extends CI_Model
 {
+
+	public function totalStock()
+	{
+		$this->db->select_sum('stock');
+		$query = $this->db->get('product');
+		if ($query->num_rows() > 0) {
+			return $query->row('stock');
+		} else {
+			return 0;
+		}
+	}
 	// public function getUserById($id)
 	// {
 	// 	return $this->db->get_where('user', ['id' => $id])->row_array();
