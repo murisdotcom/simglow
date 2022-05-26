@@ -32,6 +32,9 @@
 
 	<!-- Custome font awesome -->
 	<link href="<?= base_url('assets/fontawesome/css/all.css'); ?>" rel="stylesheet">
+
+	<!-- Custome CSS data table -->
+	<link rel="stylesheet" href="//cdn.datatables.net/1.12.0/css/jquery.dataTables.min.css">
 </head>
 
 <body class="nav-md">

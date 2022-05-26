@@ -37,7 +37,7 @@
 				<div class="col-md-2 tile_stats_count">
 					<span class="count_top"><i class="fa fa-fw fa-shopping-cart"></i> Transaksi Penjualan Hari Ini</span>
 					<div class="count">123.50</div>
-					<a href="" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+					<a href="<?= base_url('user/transaction'); ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
 					<!-- <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>3% </i> From last Week</span> -->
 				</div>
 				<div class="col-md-2 tile_stats_count">

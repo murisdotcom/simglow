@@ -33,43 +33,44 @@
 
 		<div class="flash-data" data-flashdata="<?= $this->session->flashdata('message'); ?>">
 		</div>
-
-		<table class="h6 table table-striped dt-responsive nowrap" style="text-align: center;">
-			<thead class="thead-dark">
-				<tr>
-					<th scope="col">No</th>
-					<th scope="col">Title</th>
-					<th scope="col">Menu</th>
-					<th scope="col">Url</th>
-					<th scope="col">Icon</th>
-					<th scope="col">Active</th>
-					<th style="text-align:end;" scope="col">Action</th>
-				</tr>
-			</thead>
-			<tbody>
-				<?php $i = 1; ?>
-				<?php foreach ($subMenu as $sm) : ?>
+		<div class="card-body">
+			<table class="h6 table table-striped dt-responsive nowrap" id="tableBarang">
+				<thead class="thead-dark">
 					<tr>
-						<th scope="row"><?= $i++; ?></th>
-						<td><?= $sm['title']; ?></td>
-						<td><?= $sm['menu']; ?></td>
-						<td><?= $sm['url']; ?></td>
-						<td><?= $sm['icon']; ?></td>
-						<td>
-							<?php if ($sm['is_active'] == 1) : ?>
-								<i class="fa fa-fw fa-check"></i>
-							<?php else : ?>
-								<i class="fa fa-fw fa-minus"></i>
-							<?php endif; ?>
-						</td>
-						<td style="text-align: end;">
-							<a href="<?= base_url('menu/editSubMenu/') . $sm['id']; ?>" style="color: white;" class="btn btn-success btn-circle btn-sm mb-1"><i class="fa fa-fw fa-edit"></i></a>
-							<a href="<?= base_url('menu/deleteSubMenu/') . $sm['id']; ?>" class="btn btn-danger btn-circle btn-sm mb-1 button-delete"><i class="fa fa-fw fa-trash"></i></a>
-						</td>
+						<th scope="col">No</th>
+						<th scope="col">Title</th>
+						<th scope="col">Menu</th>
+						<th scope="col">Url</th>
+						<th scope="col">Icon</th>
+						<th scope="col">Active</th>
+						<th style="text-align:end;" scope="col">Action</th>
 					</tr>
-				<?php endforeach; ?>
-			</tbody>
-		</table>
+				</thead>
+				<tbody>
+					<?php $i = 1; ?>
+					<?php foreach ($subMenu as $sm) : ?>
+						<tr>
+							<th scope="row"><?= $i++; ?></th>
+							<td><?= $sm['title']; ?></td>
+							<td><?= $sm['menu']; ?></td>
+							<td><?= $sm['url']; ?></td>
+							<td><?= $sm['icon']; ?></td>
+							<td>
+								<?php if ($sm['is_active'] == 1) : ?>
+									<i class="fa fa-fw fa-check"></i>
+								<?php else : ?>
+									<i class="fa fa-fw fa-minus"></i>
+								<?php endif; ?>
+							</td>
+							<td style="text-align: end;">
+								<a href="<?= base_url('menu/editSubMenu/') . $sm['id']; ?>" style="color: white;" class="btn btn-success btn-circle btn-sm mb-1"><i class="fa fa-fw fa-edit"></i></a>
+								<a href="<?= base_url('menu/deleteSubMenu/') . $sm['id']; ?>" class="btn btn-danger btn-circle btn-sm mb-1 button-delete"><i class="fa fa-fw fa-trash"></i></a>
+							</td>
+						</tr>
+					<?php endforeach; ?>
+				</tbody>
+			</table>
+		</div>
 
 	</div>
 </div>

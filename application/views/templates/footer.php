@@ -55,6 +55,10 @@
 <script src="<?= base_url('assets/dist/myscript.js'); ?>"></script>
 
 <script>
+	$('.table').ready(function() {
+		$('#tableBarang').DataTable();
+	});
+
 	$('.custom-file-input').on('change', function() {
 		let fileName = $(this).val().split('\\').pop();
 		$(this).next('.custom-file-label').addClass("selected").html(fileName);
@@ -78,6 +82,9 @@
 		});
 	});
 </script>
+
+<!-- Script CSS Data table -->
+<script type="text/javascript" src="//cdn.datatables.net/1.12.0/js/jquery.dataTables.min.js"></script>
 
 </body>
 

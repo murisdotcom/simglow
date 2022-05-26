@@ -7,7 +7,6 @@
 		public function __construct()
 		{
 			parent::__construct();
-			// is_logged_in();
 
 			$this->load->model('User_model');
 		}
@@ -24,8 +23,8 @@
 			$data['allproduct'] = $this->User_model->totalStock();
 
 			$this->load->view('templates/header', $data);
-			$this->load->view('templates/sidebar', $data);
 			$this->load->view('templates/topbar', $data);
+			$this->load->view('templates/sidebar', $data);
 			$this->load->view('user/index', $data);
 			$this->load->view('templates/footer');
 		}
@@ -41,8 +40,8 @@
 
 			if ($this->form_validation->run() == false) {
 				$this->load->view('templates/header', $data);
-				$this->load->view('templates/sidebar', $data);
 				$this->load->view('templates/topbar', $data);
+				$this->load->view('templates/sidebar', $data);
 				$this->load->view('user/editProfile', $data);
 				$this->load->view('templates/footer');
 			} else {
@@ -91,8 +90,8 @@
 
 			if ($this->form_validation->run() == false) {
 				$this->load->view('templates/header', $data);
-				$this->load->view('templates/sidebar', $data);
 				$this->load->view('templates/topbar', $data);
+				$this->load->view('templates/sidebar', $data);
 				$this->load->view('user/changePassword', $data);
 				$this->load->view('templates/footer');
 			} else {
@@ -135,8 +134,8 @@
 
 			if ($this->form_validation->run() == false) {
 				$this->load->view('templates/header', $data);
-				$this->load->view('templates/sidebar', $data);
 				$this->load->view('templates/topbar', $data);
+				$this->load->view('templates/sidebar', $data);
 				$this->load->view('user/supplier', $data);
 				$this->load->view('templates/footer');
 			} else {
@@ -175,8 +174,8 @@
 
 			if ($this->form_validation->run() == false) {
 				$this->load->view('templates/header', $data);
-				$this->load->view('templates/sidebar', $data);
 				$this->load->view('templates/topbar', $data);
+				$this->load->view('templates/sidebar', $data);
 				$this->load->view('user/editSupplier', $data);
 				$this->load->view('templates/footer');
 			} else {
@@ -203,8 +202,8 @@
 
 			if ($this->form_validation->run() == false) {
 				$this->load->view('templates/header', $data);
-				$this->load->view('templates/sidebar', $data);
 				$this->load->view('templates/topbar', $data);
+				$this->load->view('templates/sidebar', $data);
 				$this->load->view('user/customer', $data);
 				$this->load->view('templates/footer');
 			} else {
@@ -248,8 +247,8 @@
 
 			if ($this->form_validation->run() == false) {
 				$this->load->view('templates/header', $data);
-				$this->load->view('templates/sidebar', $data);
 				$this->load->view('templates/topbar', $data);
+				$this->load->view('templates/sidebar', $data);
 				$this->load->view('user/editCustomer', $data);
 				$this->load->view('templates/footer');
 			} else {
@@ -284,8 +283,8 @@
 
 			if ($this->form_validation->run() == false) {
 				$this->load->view('templates/header', $data);
-				$this->load->view('templates/sidebar', $data);
 				$this->load->view('templates/topbar', $data);
+				$this->load->view('templates/sidebar', $data);
 				$this->load->view('user/product', $data);
 				$this->load->view('templates/footer');
 			} else {
@@ -332,8 +331,8 @@
 
 			if ($this->form_validation->run() == false) {
 				$this->load->view('templates/header', $data);
-				$this->load->view('templates/sidebar', $data);
 				$this->load->view('templates/topbar', $data);
+				$this->load->view('templates/sidebar', $data);
 				$this->load->view('user/editProduct', $data);
 				$this->load->view('templates/footer');
 			} else {
@@ -361,8 +360,8 @@
 
 			if ($this->form_validation->run() == false) {
 				$this->load->view('templates/header', $data);
-				$this->load->view('templates/sidebar', $data);
 				$this->load->view('templates/topbar', $data);
+				$this->load->view('templates/sidebar', $data);
 				$this->load->view('user/category', $data);
 				$this->load->view('templates/footer');
 			} else {
@@ -395,8 +394,8 @@
 
 			if ($this->form_validation->run() == false) {
 				$this->load->view('templates/header', $data);
-				$this->load->view('templates/sidebar', $data);
 				$this->load->view('templates/topbar', $data);
+				$this->load->view('templates/sidebar', $data);
 				$this->load->view('user/editCategory', $data);
 				$this->load->view('templates/footer');
 			} else {
@@ -424,8 +423,8 @@
 
 			if ($this->form_validation->run() == false) {
 				$this->load->view('templates/header', $data);
-				$this->load->view('templates/sidebar', $data);
 				$this->load->view('templates/topbar', $data);
+				$this->load->view('templates/sidebar', $data);
 				$this->load->view('user/unit', $data);
 				$this->load->view('templates/footer');
 			} else {
@@ -458,8 +457,8 @@
 
 			if ($this->form_validation->run() == false) {
 				$this->load->view('templates/header', $data);
-				$this->load->view('templates/sidebar', $data);
 				$this->load->view('templates/topbar', $data);
+				$this->load->view('templates/sidebar', $data);
 				$this->load->view('user/editUnit', $data);
 				$this->load->view('templates/footer');
 			} else {
@@ -486,8 +485,8 @@
 
 			if ($this->form_validation->run() == false) {
 				$this->load->view('templates/header', $data);
-				$this->load->view('templates/sidebar', $data);
 				$this->load->view('templates/topbar', $data);
+				$this->load->view('templates/sidebar', $data);
 				$this->load->view('user/stock_in', $data);
 				$this->load->view('templates/footer');
 			} else {
@@ -518,8 +517,8 @@
 
 			if ($this->form_validation->run() == false) {
 				$this->load->view('templates/header', $data);
-				$this->load->view('templates/sidebar', $data);
 				$this->load->view('templates/topbar', $data);
+				$this->load->view('templates/sidebar', $data);
 				$this->load->view('user/stock_out', $data);
 				$this->load->view('templates/footer');
 			} else {
@@ -535,5 +534,19 @@
 				$this->session->set_flashdata('message', 'Stocked Out!');
 				redirect('user/stock_out');
 			}
+		}
+
+		public function transaction()
+		{
+			$data['title'] = 'Transaction | MS GLOW';
+			$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+			$data['product'] = $this->db->get('product')->result_array();
+
+			$this->load->view('templates/header', $data);
+			$this->load->view('templates/topbar', $data);
+			$this->load->view('templates/sidebar', $data);
+			$this->load->view('user/transaction', $data);
+			$this->load->view('templates/footer');
 		}
 	}

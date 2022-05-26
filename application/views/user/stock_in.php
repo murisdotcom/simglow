@@ -32,32 +32,33 @@
 		<?php endif; ?>
 
 		<div class="flash-data" data-flashdata="<?= $this->session->flashdata('message'); ?>"></div>
-
-		<table class="h6 table table-striped dt-responsive nowrap" style="text-align: center;">
-			<thead class="thead-dark">
-				<tr>
-					<th scope="col" style="text-align: left;">No</th>
-					<th scope="col">Date</th>
-					<th scope="col">Barcode</th>
-					<th scope="col">Total</th>
-					<th scope="col">Description</th>
-					<th scope="col">Supplier</th>
-				</tr>
-			</thead>
-			<tbody>
-				<?php $i = 1; ?>
-				<?php foreach ($stock_in as $s) : ?>
+		<div class="card-body">
+			<table class="h6 table table-striped dt-responsive nowrap" id="tableBarang">
+				<thead class="thead-dark">
 					<tr>
-						<th scope="row" style="text-align: left;"><?= $i++; ?></th>
-						<td><?= $s['date']; ?></td>
-						<td><?= $s['barcode']; ?></td>
-						<td><?= $s['total']; ?></td>
-						<td><?= $s['description']; ?></td>
-						<td><?= $s['supplier']; ?></td>
+						<th scope="col" style="text-align: left;">No</th>
+						<th scope="col">Date</th>
+						<th scope="col">Barcode</th>
+						<th scope="col">Total</th>
+						<th scope="col">Description</th>
+						<th scope="col">Supplier</th>
 					</tr>
-				<?php endforeach; ?>
-			</tbody>
-		</table>
+				</thead>
+				<tbody>
+					<?php $i = 1; ?>
+					<?php foreach ($stock_in as $s) : ?>
+						<tr>
+							<th scope="row" style="text-align: left;"><?= $i++; ?></th>
+							<td><?= $s['date']; ?></td>
+							<td><?= $s['barcode']; ?></td>
+							<td><?= $s['total']; ?></td>
+							<td><?= $s['description']; ?></td>
+							<td><?= $s['supplier']; ?></td>
+						</tr>
+					<?php endforeach; ?>
+				</tbody>
+			</table>
+		</div>
 
 	</div>
 </div>

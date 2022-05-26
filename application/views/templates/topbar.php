@@ -7,7 +7,7 @@
 			<ul class=" navbar-right">
 				<li class="nav-item dropdown open" style="padding-left: 15px;">
 					<a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-						<img src="<?= base_url('assets/img/profile/') . $user['image']; ?>" alt=""> <?= $user['name']; ?>
+						<img src="<?= base_url('assets/img/profile/') . $user['image']; ?>"> <?= $user['name']; ?>
 					</a>
 					<div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
 						<a class="dropdown-item" href="<?= base_url('user/editProfile/') . $user['id']; ?>"><i class="fa fa-user pull-right"></i> Profile</a>

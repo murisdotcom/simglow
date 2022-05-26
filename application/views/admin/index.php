@@ -30,46 +30,47 @@
 			</div>
 		<?php endif; ?>
 
-		<div class="flash-data" data-flashdata="<?= $this->session->flashdata('message'); ?>">
-		</div>
-		<table class="h6 table table-striped dt-responsive nowrap" style="text-align: center;">
-			<thead class="thead-dark">
-				<tr>
-					<th scope="col">No</th>
-					<th scope="col">Profile</th>
-					<th scope="col">Nama</th>
-					<th scope="col">Email</th>
-					<th scope="col">Role</th>
-					<th scope="col">Active</th>
-					<th scope="col">Member Since</th>
-					<th scope="col">Action</th>
-				</tr>
-			</thead>
-			<tbody>
-				<?php $i = 1; ?>
-				<?php foreach ($Admin as $a) : ?>
+		<div class="flash-data" data-flashdata="<?= $this->session->flashdata('message'); ?>"></div>
+		<div class="card-body">
+			<table class="h6 table table-striped dt-responsive nowrap" id="tableBarang">
+				<thead class="thead-dark">
 					<tr>
-						<th scope="row"><?= $i++; ?></th>
-						<td><img style="width: 70px;" src="<?= base_url('assets/img/profile/') . $a['image']; ?>"></td>
-						<td><?= $a['name']; ?></td>
-						<td><?= $a['email']; ?></td>
-						<td><?= $a['role']; ?></td>
-						<td>
-							<?php if ($a['is_active'] == 1) : ?>
-								<i class="fa fa-fw fa-check"></i>
-							<?php else : ?>
-								<i class="fa fa-fw fa-minus"></i>
-							<?php endif; ?>
-						</td>
-						<td><?= date('d F Y', $a['date_created']); ?></td>
-						<td style="text-align: end;">
-							<a href="<?= base_url('admin/editAdmin/') . $a['id']; ?>" style="color: white;" class="btn btn-success btn-circle btn-sm mb-1"><i class="fa fa-fw fa-edit"></i></a>
-							<a href="<?= base_url('admin/deleteAdmin/') . $a['id']; ?>" class="btn btn-danger btn-circle btn-sm mb-1 button-delete"><i class="fa fa-fw fa-trash"></i></a>
-						</td>
+						<th scope="col">No</th>
+						<th scope="col">Profile</th>
+						<th scope="col">Nama</th>
+						<th scope="col">Email</th>
+						<th scope="col">Role</th>
+						<th scope="col">Active</th>
+						<th scope="col">Member Since</th>
+						<th scope="col"></th>
 					</tr>
-				<?php endforeach; ?>
-			</tbody>
-		</table>
+				</thead>
+				<tbody>
+					<?php $i = 1; ?>
+					<?php foreach ($Admin as $a) : ?>
+						<tr>
+							<th scope="row"><?= $i++; ?></th>
+							<td><img style="width: 70px;" src="<?= base_url('assets/img/profile/') . $a['image']; ?>"></td>
+							<td><?= $a['name']; ?></td>
+							<td><?= $a['email']; ?></td>
+							<td><?= $a['role']; ?></td>
+							<td>
+								<?php if ($a['is_active'] == 1) : ?>
+									<i class="fa fa-fw fa-check"></i>
+								<?php else : ?>
+									<i class="fa fa-fw fa-minus"></i>
+								<?php endif; ?>
+							</td>
+							<td><?= date('d F Y', $a['date_created']); ?></td>
+							<td style="text-align: end;">
+								<a href="<?= base_url('admin/editAdmin/') . $a['id']; ?>" style="color: white;" class="btn btn-success btn-circle btn-sm mb-1"><i class="fa fa-fw fa-edit"></i></a>
+								<a href="<?= base_url('admin/deleteAdmin/') . $a['id']; ?>" class="btn btn-danger btn-circle btn-sm mb-1 button-delete"><i class="fa fa-fw fa-trash"></i></a>
+							</td>
+						</tr>
+					<?php endforeach; ?>
+				</tbody>
+			</table>
+		</div>
 
 	</div>
 </div>

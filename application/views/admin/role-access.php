@@ -4,7 +4,7 @@
 			<div class="row">
 				<div class="col">
 					<h4 class="h5 align-middle m-0 font-weight-bold">
-						<?= $title; ?>
+						<?= $titlee . ' : ' . $role['role']; ?>
 					</h4>
 				</div>
 				<div class="col-auto">
@@ -25,8 +25,8 @@
 		</div>
 
 		<div class="card-body">
-			<h5>Role : <?= $role['role']; ?></h5>
-			<table class="h6 table table-striped dt-responsive nowrap" style="text-align: center;">
+			<!-- <h5>Role : <?= $role['role']; ?></h5> -->
+			<table class="h6 table table-striped dt-responsive nowrap" id="tableBarang">
 				<thead class="thead-dark">
 					<tr>
 						<th scope="col">#</th>
@@ -38,7 +38,7 @@
 					<?php $i = 1; ?>
 					<?php foreach ($menu as $m) : ?>
 						<tr>
-							<th scope="row"><?= $i++; ?></th>
+							<th scope="row" style="text-align: left;"><?= $i++; ?></th>
 							<td><?= $m['menu']; ?></td>
 							<td>
 								<div class="form-check">
