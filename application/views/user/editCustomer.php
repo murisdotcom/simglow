@@ -20,6 +20,11 @@
 			</div>
 		</div>
 		<div class="card-body">
+			<div class="form-group">
+				<label for="id_customer">Id Customer</label>
+				<input type="text" class="form-control" id="id_customer" name="id_customer" placeholder="Id Customer" value="<?= $Customer['id_customer']; ?>" readonly>
+				<span class="form-text text-danger"><?= form_error('id_customer'); ?></span>
+			</div>
 			<form action="" method="post">
 				<input type="hidden" name="id" value="<?= $Customer['id']; ?>">
 				<div class="form-group">

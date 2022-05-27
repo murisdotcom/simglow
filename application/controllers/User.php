@@ -194,6 +194,9 @@
 			$data['customer'] = $this->User_model->getCustomer();
 			$data['gender'] = $this->db->get('gender')->result_array();
 
+			$this->form_validation->set_rules('id_customer', 'Id Customer', 'is_unique[user.id_customer]', [
+				'is_unique' => 'This id customer has already registered!'
+			]);
 			$this->form_validation->set_rules('name', 'Name', 'required');
 			$this->form_validation->set_rules('gender', 'Gender', 'required');
 			$this->form_validation->set_rules('address', 'Address', 'required');
@@ -208,6 +211,7 @@
 				$this->load->view('templates/footer');
 			} else {
 				$data = [
+					'id_customer' => $this->input->post('id_customer', true),
 					'name' => $this->input->post('name', true),
 					'gender' => $this->input->post('gender', true),
 					'address' => $this->input->post('address', true),
@@ -239,6 +243,9 @@
 			$data['status'] = $this->db->get('status_customer')->result_array();
 			$data['gender'] = $this->db->get('gender')->result_array();
 
+			$this->form_validation->set_rules('id_customer', 'Id Customer', 'is_unique[user.id_customer]', [
+				'is_unique' => 'This id customer has already registered!'
+			]);
 			$this->form_validation->set_rules('name', 'Name', 'required');
 			$this->form_validation->set_rules('gender', 'Gender', 'required');
 			$this->form_validation->set_rules('address', 'Address', 'required');

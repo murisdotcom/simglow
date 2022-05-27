@@ -37,6 +37,7 @@
 				<thead class="thead-dark">
 					<tr>
 						<th scope="col" style="text-align: left;">No</th>
+						<th scope="col">Id Customer</th>
 						<th scope="col">Name</th>
 						<th scope="col">Status</th>
 						<th scope="col">Gender</th>
@@ -50,6 +51,7 @@
 					<?php foreach ($customer as $c) : ?>
 						<tr>
 							<th scope="row" style="text-align: left;"><?= $i++; ?></th>
+							<td><?= $c['id_customer']; ?></td>
 							<td><?= $c['name']; ?></td>
 							<td><?= $c['status']; ?></td>
 							<td><?= $c['gender']; ?></td>
@@ -86,6 +88,9 @@
 			</div>
 			<form action="<?= base_url('user/customer'); ?>" method="post">
 				<div class="modal-body">
+					<div class="form-group">
+						<input type="text" class="form-control" id="id_customer" name="id_customer" placeholder="Id Customer">
+					</div>
 					<div class="form-group">
 						<input type="text" class="form-control" id="name" name="name" placeholder="Customer name">
 					</div>

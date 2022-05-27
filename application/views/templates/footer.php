@@ -65,7 +65,7 @@
 	});
 
 
-	$('.form-check-input').on('click', function() {
+	$('.custom-control-input').on('click', function() {
 		const menuId = $(this).data('menu');
 		const roleId = $(this).data('role');
 

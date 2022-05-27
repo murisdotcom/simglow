@@ -64,6 +64,7 @@ class User_model extends CI_Model
 	public function editCustomer()
 	{
 		$data = [
+			// "id_customer" => $this->input->post('id_customer', true),
 			"name" => $this->input->post('name', true),
 			"gender" => $this->input->post('gender', true),
 			"address" => $this->input->post('address', true),

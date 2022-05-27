@@ -31,7 +31,7 @@
 	<link href="<?= base_url('assets/'); ?>build/css/custom.min.css" rel="stylesheet">
 
 	<!-- Custome font awesome -->
-	<link href="<?= base_url('assets/fontawesome/css/all.css'); ?>" rel="stylesheet">
+	<link rel="stylesheet" href="<?= base_url('assets/fontawesome/css/all.css'); ?>">
 
 	<!-- Custome CSS data table -->
 	<link rel="stylesheet" href="//cdn.datatables.net/1.12.0/css/jquery.dataTables.min.css">
