@@ -42,14 +42,14 @@
 							<td><?= $m['menu']; ?></td>
 							<td>
 
-								<div class="custom-control custom-switch">
-									<input type="checkbox" class="form-check-input custom-control-input" <?= check_access($role['id'], $m['id']); ?> data-role="<?= $role['id']; ?>" data-menu="<?= $m['id']; ?>">
-									<label class="custom-control-label"></label>
-								</div>
-
-								<!-- <div class="form-check">
-									<input class="form-check-input" type="checkbox" <?= check_access($role['id'], $m['id']); ?> data-role="<?= $role['id']; ?>" data-menu="<?= $m['id']; ?>">
+								<!-- <div class="custom-control custom-switch">
+									<input type="checkbox" class="custom-control-input" <?= check_access($role['id'], $m['id']); ?> data-role="<?= $role['id']; ?>" data-menu="<?= $m['id']; ?>" id="click">
+									<label class="custom-control-label" for="click"></label>
 								</div> -->
+
+								<div class="form-check">
+									<input class="form-check-input" type="checkbox" <?= check_access($role['id'], $m['id']); ?> data-role="<?= $role['id']; ?>" data-menu="<?= $m['id']; ?>">
+								</div>
 							</td>
 						</tr>
 					<?php endforeach; ?>
