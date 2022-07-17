@@ -24,7 +24,7 @@
 				<input type="hidden" name="id" value="<?= $Product['id']; ?>">
 				<div class="form-group">
 					<label for="barcode">Barcode</label>
-					<input type="text" class="form-control" id="barcode" name="barcode" placeholder="Barcode" value="<?= $Product['barcode']; ?>" readonly>
+					<input type="text" class="form-control" name="barcode" placeholder="Barcode" value="<?= $Product['barcode']; ?>" readonly>
 					<span class="form-text text-danger"><?= form_error('barcode'); ?></span>
 				</div>
 				<div class="form-group">

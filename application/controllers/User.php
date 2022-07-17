@@ -549,6 +549,7 @@
 			$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
 			$data['product'] = $this->db->get('product')->result_array();
+			$data['customer'] = $this->db->get('customer')->result_array();
 
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/topbar', $data);
